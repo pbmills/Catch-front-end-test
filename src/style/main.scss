@@ -1,0 +1,87 @@
+@import "./variables.scss";
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: arial, sans-serif;
+
+  input, select{
+    outline: none;
+  }
+}
+
+.container{
+  max-width: $containerWidth;
+  margin: 0 auto;
+  padding: 60px 0 90px;
+
+  &__title{
+    font-size: 24px;
+    text-align: center;
+    line-height: 30px;
+  }
+
+  .form{
+    margin-top: $horizontalGap;
+    text-align: center;
+    &__title{
+      font-size: 14px;
+      line-height: 18px;
+      color: $gray;
+      margin-bottom: 30px;
+      font-weight: 300;
+      text-align: center;
+    }
+    &__inputs-wrapper{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 30px;
+      grid-row-gap: 21px;
+
+      input, select{
+        padding: 16px 20px;
+        border: 1px solid $border-color;
+        border-radius: 5px;
+        font-size: 14px;
+        line-height: 16px;
+        appearance: none;
+        webkit-appearance: none;
+        color: $gray;
+
+        &::placeholder{
+          color: $gray;
+        }
+      }
+
+      select{
+        //background-image: url('../static/arrow-down.svg');
+        background-position-x: 95%;
+        background-position-y: center;
+        background-repeat: no-repeat;
+      }
+    }
+    &__button{
+      background: $green;
+      border: 1px solid $dark-green;
+      height: 48px;
+      max-width: 270px;
+      width: 100%;
+      margin: 21px auto 59.5px;
+      font-size: 14px;
+      line-height: 16px;
+      border-radius: 5px;
+      color: $white;
+      font-weight: bold;
+    }
+    &__end-dash{
+      width: 170px;
+      height: 0;
+      border-bottom: 1px dashed $gray;
+      margin: 0 auto 60px;
+    }
+  }
+}
