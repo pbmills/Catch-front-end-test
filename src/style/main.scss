@@ -1,34 +1,56 @@
 @import "./variables.scss";
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: arial, sans-serif;
 
-  input, select{
+  input, select {
     outline: none;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  div > img {
+    display: block;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .link{
+    color: $blue;
+    display: block;
+    font-size: 14px;
+    line-height: 18px;
   }
 }
 
-.container{
+.container {
   max-width: $containerWidth;
   margin: 0 auto;
   padding: 60px 0 90px;
 
-  &__title{
+  &__title {
     font-size: 24px;
     text-align: center;
     line-height: 30px;
   }
 
-  .form{
+  .form {
     margin-top: $horizontalGap;
     text-align: center;
-    &__title{
+
+    &__title {
       font-size: 14px;
       line-height: 18px;
       color: $gray;
@@ -36,13 +58,14 @@ body{
       font-weight: 300;
       text-align: center;
     }
-    &__inputs-wrapper{
+
+    &__inputs-wrapper {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       grid-column-gap: 30px;
       grid-row-gap: 21px;
 
-      input, select{
+      input, select {
         padding: 16px 20px;
         border: 1px solid $border-color;
         border-radius: 5px;
@@ -52,19 +75,20 @@ body{
         webkit-appearance: none;
         color: $gray;
 
-        &::placeholder{
+        &::placeholder {
           color: $gray;
         }
       }
 
-      select{
-        //background-image: url('../static/arrow-down.svg');
+      select {
+        background-image: url('/static/arrow-down.svg');
         background-position-x: 95%;
         background-position-y: center;
         background-repeat: no-repeat;
       }
     }
-    &__button{
+
+    &__button {
       background: $green;
       border: 1px solid $dark-green;
       height: 48px;
@@ -77,11 +101,171 @@ body{
       color: $white;
       font-weight: bold;
     }
-    &__end-dash{
+
+    &__end-dash {
       width: 170px;
       height: 0;
       border-bottom: 1px dashed $gray;
       margin: 0 auto 60px;
+    }
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    grid-gap: 30px;
+
+    .card {
+
+      &__preview {
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      &__title {
+        font-size: 14px;
+        padding-top: 12px;
+        color: $gray;
+
+      }
+
+      &__description {
+        margin-top: 6px;
+        font-size: 14px;
+        line-height: 18px;
+        color: $gray;
+      }
+
+      &__link {
+        margin-top: 11px;
+      }
+    }
+  }
+
+  .slider {
+    display: flex;
+    margin-top: 42px;
+    overflow-x: auto;
+    max-width: $containerWidth;
+    scroll-snap-type: x mandatory;
+
+
+    &__item {
+      min-height: 174px;
+      min-width: 236px;
+      width: 236px;
+      border-radius: 5px;
+      scroll-snap-align: start;
+      overflow: hidden;
+
+      & > img {
+        object-fit: cover;
+      }
+
+      &:not(&:last-child) {
+        margin-right: 10px;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  @media (max-width: 820px) {
+
+    margin: 0 auto;
+    padding: 60px 25px 90px;
+    max-width: 100%;
+
+  }
+
+  @media screen and (max-width: 768px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    .form {
+      &__end-dash {
+        margin: 0 auto 41.5px;
+      }
+
+      &__button {
+        margin: 21px auto 41.5px;
+      }
+    }
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+footer {
+  border-top: 1px solid $border-color;
+
+  .container{
+    padding: 90px 0;
+  }
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 130px;
+
+    p, h2{
+      color: $gray;
+      font-size: 14px;
+    }
+
+    &__left {
+      &__links {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 14px;
+        margin-bottom: 30px;
+        width: max-content;
+        li{
+          width: 39px;
+          height: 39px;
+          display: block;
+          a, img{
+            display: block;
+          }
+        }
+      }
+    }
+
+    &__right{
+      & >:last-child{
+        margin-top: 30px;
+      }
+      p, h2{
+        margin-bottom: 3.6px;
+      }
+    }
+
+    @media screen and (max-width: 600px){
+      grid-gap: 50px;
+    }
+
+    @media screen and (max-width: 425px){
+      grid-template-columns: 1fr;
+      grid-gap: 30px;
+      text-align: center;
+      padding-left: 20px;
+      padding-right: 20px;
+
+      &__left{
+        order: 2;
+        &__links{
+          margin: 0 auto 30px;
+        }
+      }
     }
   }
 }
