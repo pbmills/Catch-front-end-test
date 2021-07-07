@@ -24,5 +24,5 @@ $ npm start / npm run start:dev (dev) # or yarn start
 ```
 
 ## Description
-This project is made for the interview puropose for a company.
+This project is made for the interview purpose for a company.
 
